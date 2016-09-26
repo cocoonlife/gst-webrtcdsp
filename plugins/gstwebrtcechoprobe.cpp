@@ -220,10 +220,10 @@ gst_webrtc_echo_probe_class_init (GstWebrtcEchoProbeClass * klass)
 
   audiofilter_class->setup = GST_DEBUG_FUNCPTR (gst_webrtc_echo_probe_setup);
 
-  gst_element_class_add_static_pad_template (element_class,
-      &gst_webrtc_echo_probe_src_template);
-  gst_element_class_add_static_pad_template (element_class,
-      &gst_webrtc_echo_probe_sink_template);
+  gst_element_class_add_pad_template (element_class,
+      gst_static_pad_template_get (&gst_webrtc_echo_probe_src_template));
+  gst_element_class_add_pad_template (element_class,
+      gst_static_pad_template_get (&gst_webrtc_echo_probe_sink_template));
 
   gst_element_class_set_static_metadata (element_class,
       "Accoustic Echo Canceller probe",
